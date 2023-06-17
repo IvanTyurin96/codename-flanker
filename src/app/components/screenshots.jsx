@@ -32,7 +32,6 @@ const Screenshots = ({ screenCollapseWidth }) => {
     if (newCurrentScreenshotId < 1) {
       newCurrentScreenshotId = screenshots.length;
     }
-    console.log(newCurrentScreenshotId);
     setScreenshotPath(screenshots.find((element) => element._id === newCurrentScreenshotId.toString()).path);
   };
 
