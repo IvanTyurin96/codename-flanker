@@ -16,26 +16,26 @@ const Installation = () => {
           <div className="text-center">
             <img className="installation-image mt-2 mb-2" src={require(`../img/installation_1.png`)}></img>
           </div>
-          Hold this window opened. It steps below we will drag this folder to another place.
+          Hold this window opened. In steps below we will drag this folder to another place.
         </li>
         <li>
-          Find your user DCS folder in Saved Games. By default it have next path: <strong>C:\Users\[YourUserName]\Saved Games\DCS</strong>
+          Find your user DCS folder in Saved Games. By default it has this path: <strong>C:\Users\[YourUserName]\Saved Games\DCS</strong>
           <br />
-          This DCS folder have next folders:{" "}
+          This DCS folder has these folders:{" "}
           <div className="text-center">
             <img className="installation-image mt-2 mb-2" src={require(`../img/installation_2.png`)}></img>
           </div>
-          You need <strong>Mods</strong> folder. If this folder not exist, create it.
+          You need <strong>Mods</strong> folder. If this folder does not exist, create it.
         </li>
         <li>
-          <strong>Mods</strong> folder should contain <strong>aircraft</strong> folder. If this folder not exist, create it.
+          <strong>Mods</strong> folder should contain <strong>aircraft</strong> folder. If this folder does not exist, create it.
           <div className="text-center">
             <img className="installation-image mt-2 mb-2" src={require(`../img/installation_3.png`)}></img>
           </div>
         </li>
         <li>
-          Drag <strong>Su-30MK_SFM v2.1.12b</strong> folder from your zip-archive in <strong>aircraft</strong> folder. After previous steps you should have next
-          path: <strong>C:\Users\[YourUserName]\Saved Games\DCS\Mods\aircraft\Su-30MK_SFM v2.1.12b</strong>
+          Drag <strong>Su-30MK_SFM v2.1.12b</strong> folder from your zip-archive and place it in <strong>aircraft</strong> folder. After previous steps you
+          should have next path: <strong>C:\Users\[YourUserName]\Saved Games\DCS\Mods\aircraft\Su-30MK_SFM v2.1.12b</strong>
           <div className="text-center">
             <img className="installation-image mt-2 mb-2" src={require(`../img/installation_4.png`)}></img>
           </div>
@@ -47,7 +47,7 @@ const Installation = () => {
           </div>
         </li>
         <li>
-          Select <strong>Installed</strong> tab and check that <strong>Flanker Ex</strong> module from Codename Flanker installed:
+          Select <strong>Installed</strong> tab and ensure that <strong>Flanker Ex</strong> module from Codename Flanker installed:
           <div className="text-center">
             <img className="installation-image mt-2 mb-2" src={require(`../img/installation_6.png`)}></img>
           </div>

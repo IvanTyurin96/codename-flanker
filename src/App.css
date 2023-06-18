@@ -54,8 +54,10 @@ body {
 }
 
 
+
 .faq p {
   color: lightgrey;
+  word-wrap: break-word;
 }
 
 
@@ -161,6 +163,10 @@ body {
 }
 .artwork-description {
   white-space: pre-line;
+  word-wrap: break-word;
+}
+.artwork-description a {
+  word-wrap: break-word;
 }
 
 
