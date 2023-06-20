@@ -47,6 +47,39 @@ body {
   width: min-content;
 }
 
+.footer-society {
+
+}
+.footer-society .bi {
+ font-size: 24px;
+ color:white;
+ transition-property: color;
+ transition-duration: 0.25s;
+}
+.footer-society .bi-vk {
+  fill: white !important;
+  transition-property: fill;
+  transition-duration: 0.25s;
+  width: 26px;
+  height: 26px;
+}
+.footer-society .bi:hover {
+  transition-property: color;
+  transition-duration: 0.25s;
+}
+.footer-society .bi-youtube:hover {
+  color:red;
+
+}
+.footer-society .bi-discord:hover {
+  color: #5865f2;
+}
+.footer-society .bi-vk:hover {
+  fill: #0077ff !important;
+  transition-property: fill;
+  transition-duration: 0.25s;
+}
+
 
 .download-icon {
   margin: 0px 8px;
