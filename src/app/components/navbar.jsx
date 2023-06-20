@@ -4,8 +4,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import NavLinks from "./navlinks";
 import Icon from "../icons/Icon.png";
 
-const NavBar = ({ location, screenCollapseWidth }) => {
-  const themeHeight = 300;
+const NavBar = ({ location, screenCollapseWidth, stickyClass }) => {
   const [width, setWidth] = useState(window.innerWidth);
   const updateDimensions = () => {
     setWidth(window.innerWidth);
@@ -13,15 +12,6 @@ const NavBar = ({ location, screenCollapseWidth }) => {
   useEffect(() => {
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
-
-  const [stickyClass, setStickyClass] = useState("");
-  const stickNavbar = () => {
-    const windowHeight = window.scrollY;
-    setStickyClass(windowHeight > themeHeight ? " fixed-top" : "");
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", stickNavbar);
   }, []);
 
   return (
