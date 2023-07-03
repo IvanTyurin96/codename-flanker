@@ -10,8 +10,13 @@ import Patchnotes from "./app/layouts/patchnotes";
 import Footer from "./app/components/footer";
 import Artwork from "./app/layouts/artwork";
 import Installation from "./app/layouts/installation";
+import { shuffleArray } from "./app/utils/shuffleArray";
+import api from "./app/api";
 
 function App() {
+  const artworks = api.artworks.fetchAll();
+  const [sortedArtworks, setSortedArtworks] = useState(artworks);
+
   const location = useLocation();
   const screenCollapseWidth = 720;
 
@@ -24,6 +29,7 @@ function App() {
     setContainerMargin(windowHeight > themeHeight ? " container-margin-top" : "");
   };
   useEffect(() => {
+    setSortedArtworks(shuffleArray(artworks));
     window.addEventListener("scroll", stickNavbar);
   }, []);
 
@@ -37,7 +43,7 @@ function App() {
           <Route path="/download" component={Download} />
           <Route path="/installation" component={Installation} />
           <Route path="/gallery/:artworkId" render={(props) => <Artwork {...props} screenCollapseWidth={screenCollapseWidth} />} />
-          <Route path="/gallery" render={() => <Gallery screenCollapseWidth={screenCollapseWidth} />} />
+          <Route path="/gallery" render={() => <Gallery screenCollapseWidth={screenCollapseWidth} sortedArtworks={sortedArtworks} />} />
           <Route path="/faq" component={Faq} />
           <Route path="/patchnotes" component={Patchnotes} />
           <Route path="/" render={() => <Home screenCollapseWidth={screenCollapseWidth} />} />

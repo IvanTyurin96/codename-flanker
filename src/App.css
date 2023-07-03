@@ -270,4 +270,20 @@ body {
 }
 .screenshots-open-arrow-button i:hover {
   color: white
- }
+}
+.screenshots-carousel {
+  position: absolute;
+  bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+.screenshots-carousel-circles {
+  width: 12px;
+  height: 12px;
+  background-color: grey;
+  border-radius: 50%;
+  margin: 0px 4px;
+}
+.screenshots-carousel-circles-selected {
+  background-color: white;
+}

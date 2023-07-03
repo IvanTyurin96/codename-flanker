@@ -2,10 +2,8 @@ import api from "../api";
 import React, { useState, useEffect } from "react";
 import { shuffleArray } from "../utils/shuffleArray";
 
-const Gallery = ({ screenCollapseWidth }) => {
-  const artworks = api.artworks.fetchAll();
+const Gallery = ({ screenCollapseWidth, sortedArtworks }) => {
   const artists = api.artists.fetchAll();
-  const [sortedArtworks, setSortedArtworks] = useState(artworks);
 
   const [filteredArtworks, setFilteredArtworks] = useState(sortedArtworks);
   const [artistName, setArtistName] = useState("All");
@@ -24,7 +22,6 @@ const Gallery = ({ screenCollapseWidth }) => {
     setWidth(window.innerWidth);
   };
   useEffect(() => {
-    setSortedArtworks(shuffleArray(artworks));
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);

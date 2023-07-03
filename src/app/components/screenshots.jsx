@@ -22,17 +22,29 @@ const Screenshots = ({ screenCollapseWidth }) => {
     setScreenshotZoom(false);
   };
 
+  const [leftArrow, setLeftArrow] = useState(false);
+  const [rightArrow, setRightArrow] = useState(true);
+  const [selectedScreenshotId, setSelectedScreenshotId] = useState(1);
+
   const changeImage = (value) => {
     const currentScreenshot = screenshots.find((element) => element.path === screenshotPath);
     const currentScreenshotId = parseInt(currentScreenshot._id);
     var newCurrentScreenshotId = currentScreenshotId + value;
-    if (newCurrentScreenshotId > screenshots.length) {
-      newCurrentScreenshotId = 1;
-    }
-    if (newCurrentScreenshotId < 1) {
+    if (newCurrentScreenshotId >= screenshots.length) {
       newCurrentScreenshotId = screenshots.length;
+      setRightArrow(false);
+    } else {
+      setRightArrow(true);
+    }
+
+    if (newCurrentScreenshotId <= 1) {
+      newCurrentScreenshotId = 1;
+      setLeftArrow(false);
+    } else {
+      setLeftArrow(true);
     }
     setScreenshotPath(screenshots.find((element) => element._id === newCurrentScreenshotId.toString()).path);
+    setSelectedScreenshotId(newCurrentScreenshotId);
   };
 
   document.onkeydown = (e) => {
@@ -71,11 +83,23 @@ const Screenshots = ({ screenCollapseWidth }) => {
             aria-label="Close"
             onClick={() => screenshotCloseClick()}
           ></button>
-          <div className="screenshots-open-arrow-button" style={{ left: "8px" }} onClick={() => changeImage(-1)}>
+          <div className={"screenshots-open-arrow-button" + (leftArrow ? "" : " d-none")} style={{ left: "8px" }} onClick={() => changeImage(-1)}>
             <i className="bi bi-arrow-left"></i>
           </div>
-          <div className="screenshots-open-arrow-button" style={{ right: "8px" }} onClick={() => changeImage(1)}>
+          <div className={"screenshots-open-arrow-button" + (rightArrow ? "" : " d-none")} style={{ right: "8px" }} onClick={() => changeImage(1)}>
             <i className="bi bi-arrow-right"></i>
+          </div>
+          <div className="screenshots-carousel">
+            {screenshots.map((screenshot) => {
+              return (
+                <div
+                  key={screenshot._id}
+                  className={
+                    "screenshots-carousel-circles" + (parseInt(screenshot._id) === selectedScreenshotId ? " screenshots-carousel-circles-selected" : "")
+                  }
+                ></div>
+              );
+            })}
           </div>
         </div>
       </div>
