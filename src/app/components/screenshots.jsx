@@ -15,8 +15,10 @@ const Screenshots = ({ screenCollapseWidth }) => {
 
   const [screenshotZoom, setScreenshotZoom] = useState(false);
   const [screenshotPath, setScreenshotPath] = useState(screenshots[0].path);
-  const screenshotOpenClick = () => {
+  const screenshotOpenClick = (id) => {
+    console.log(id);
     setScreenshotZoom(true);
+    setSelectedScreenshotId(parseInt(id));
   };
   const screenshotCloseClick = () => {
     setScreenshotZoom(false);
@@ -68,7 +70,7 @@ const Screenshots = ({ screenCollapseWidth }) => {
             className="screenshots-image"
             src={require(`../api/fake.api/img/${screenshot.path}`)}
             onClick={() => {
-              screenshotOpenClick();
+              screenshotOpenClick(screenshot._id);
               setScreenshotPath(screenshot.path);
             }}
           ></img>
