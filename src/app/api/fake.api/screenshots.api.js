@@ -9,11 +9,11 @@ const screenshots = [
   },
   {
     _id: "3",
-    path: "screenshot-3.png",
+    path: "screenshot-3.jpg",
   },
   {
     _id: "4",
-    path: "screenshot-4.png",
+    path: "screenshot-4.jpg",
   },
   {
     _id: "5",
@@ -25,11 +25,11 @@ const screenshots = [
   },
   {
     _id: "7",
-    path: "screenshot-7.png",
+    path: "screenshot-7.jpg",
   },
   {
     _id: "8",
-    path: "screenshot-8.png",
+    path: "screenshot-8.jpg",
   },
 ];
 
