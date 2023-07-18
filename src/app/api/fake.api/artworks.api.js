@@ -616,6 +616,32 @@ const artworks = [
                   This is intended to be used in DCS World Community Su-35S Mod. For project details, visit our discord:
                   <a className="link-primary" href="https://discord.gg/sbw8A5Mg75">https://discord.gg/sbw8A5Mg75</a>`,
   },
+  {
+    _id: "29",
+    name: "R-77",
+    thumbnail: "R-77_3.jpg",
+    images: [
+      { image: "R-77_1.jpg", description: "" },
+      { image: "R-77_2.jpg", description: "" },
+      { image: "R-77_4.jpg", description: "" },
+      { image: "R-77_5.jpg", description: "" },
+      { image: "R-77_6.jpg", description: "" },
+      { image: "R-77_7.jpg", description: "" },
+      { image: "R-77_8.jpg", description: "" },
+      { image: "R-77_9.jpg", description: "" },
+      { image: "R-77_10.jpg", description: "" },
+      { image: "R-77_11.jpg", description: "" },
+      { image: "R-77_12.jpg", description: "" },
+      { image: "R-77_13.jpg", description: "" },
+      { image: "R-77_14.jpg", description: "" },
+    ],
+    artistId: "1",
+    description: `3D model of Russian air-to-air missile R-77. This model have been created for DCS World Community Su-30 Mod. Project details: <a className="link-primary" href="https://discord.gg/sbw8A5Mg75">https://discord.gg/sbw8A5Mg75</a>
+                  Model have one material and one texture 2048x2048.
+                  Model characteristics:
+                  Polygons: 5641
+                  Triangles: 12494`,
+  },
 ];
 
 const fetchAll = () => {
