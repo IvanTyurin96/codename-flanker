@@ -205,6 +205,15 @@ body {
 .artwork-description a {
   word-wrap: break-word;
 }
+.artwork-shortcuts div {
+  color: lightgrey;
+}
+.artwork-shortcuts i {
+  color: white;
+}
+.artwork-shortcuts-esc {
+  color: white !important;
+}
 
 
 .installation-image {

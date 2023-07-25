@@ -1,6 +1,5 @@
 import api from "../api";
 import React, { useState, useEffect } from "react";
-import { shuffleArray } from "../utils/shuffleArray";
 
 const Gallery = ({ screenCollapseWidth, sortedArtworks }) => {
   const artists = api.artists.fetchAll();
