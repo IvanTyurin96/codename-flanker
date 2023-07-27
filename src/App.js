@@ -42,7 +42,7 @@ function App() {
           <Route path="/home" render={() => <Home screenCollapseWidth={screenCollapseWidth} />} />
           <Route path="/download" component={Download} />
           <Route path="/installation" component={Installation} />
-          <Route path="/gallery/:artworkId" render={(props) => <Artwork {...props} screenCollapseWidth={screenCollapseWidth} />} />
+          <Route path="/gallery/:artworkId" render={(props) => <Artwork {...props} screenCollapseWidth={screenCollapseWidth} location={location} />} />
           <Route path="/gallery" render={() => <Gallery screenCollapseWidth={screenCollapseWidth} sortedArtworks={sortedArtworks} />} />
           <Route path="/faq" component={Faq} />
           <Route path="/patchnotes" component={Patchnotes} />
