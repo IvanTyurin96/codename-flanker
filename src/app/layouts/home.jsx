@@ -1,6 +1,6 @@
 import Screenshots from "../components/screenshots";
 
-const Home = ({ screenCollapseWidth }) => {
+const Home = () => {
   return (
     <>
       <div className="pt-3 pb-3">
@@ -34,7 +34,7 @@ const Home = ({ screenCollapseWidth }) => {
           Join our Discord server: <a href="https://discord.gg/codename-flanker-community-839196573228335185">Click</a>
         </p>
         <div className="mt-2">
-          <Screenshots screenCollapseWidth={screenCollapseWidth} />
+          <Screenshots />
         </div>
       </div>
     </>

@@ -1,7 +1,12 @@
 import api from "../api";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
-const Gallery = ({ screenCollapseWidth, sortedArtworks }) => {
+const Gallery = () => {
+  const screenCollapseWidth = useSelector((state) => state.screenCollapseWidth);
+  const windowWidth = useSelector((state) => state.windowWidth);
+  const sortedArtworks = useSelector((state) => state.sortedArtworks);
+
   const artists = api.artists.fetchAll();
 
   const [filteredArtworks, setFilteredArtworks] = useState(sortedArtworks);
@@ -15,15 +20,6 @@ const Gallery = ({ screenCollapseWidth, sortedArtworks }) => {
       setArtistName(artists.find((artist) => artist._id === artistId).name);
     }
   };
-
-  const [width, setWidth] = useState(window.innerWidth);
-  const updateDimensions = () => {
-    setWidth(window.innerWidth);
-  };
-  useEffect(() => {
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
 
   return (
     <div className="pt-3 pb-3">
@@ -53,7 +49,7 @@ const Gallery = ({ screenCollapseWidth, sortedArtworks }) => {
           })}
         </div>
       </div>
-      <div className={"mt-2" + (width >= screenCollapseWidth ? " gallery-grid" : " gallery-grid gallery-grid-mobile")}>
+      <div className={"mt-2" + (windowWidth >= screenCollapseWidth ? " gallery-grid" : " gallery-grid gallery-grid-mobile")}>
         {filteredArtworks.map((artwork) => {
           const artist = artists.find((element) => element._id === artwork.artistId);
           return (

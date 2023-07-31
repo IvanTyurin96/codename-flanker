@@ -1,22 +1,16 @@
 import api from "../api";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
-const Screenshots = ({ screenCollapseWidth }) => {
+const Screenshots = () => {
+  const screenCollapseWidth = useSelector((state) => state.screenCollapseWidth);
+  const windowWidth = useSelector((state) => state.windowWidth);
+
   const screenshots = api.screenshots.fetchAll();
-
-  const [width, setWidth] = useState(window.innerWidth);
-  const updateDimensions = () => {
-    setWidth(window.innerWidth);
-  };
-  useEffect(() => {
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
 
   const [screenshotZoom, setScreenshotZoom] = useState(false);
   const [screenshotPath, setScreenshotPath] = useState(screenshots[0].path);
   const screenshotOpenClick = (id) => {
-    console.log(id);
     setScreenshotZoom(true);
     setSelectedScreenshotId(parseInt(id));
   };
@@ -24,7 +18,7 @@ const Screenshots = ({ screenCollapseWidth }) => {
     setScreenshotZoom(false);
   };
 
-  const [leftArrow, setLeftArrow] = useState(false);
+  const [leftArrow, setLeftArrow] = useState(true);
   const [rightArrow, setRightArrow] = useState(true);
   const [selectedScreenshotId, setSelectedScreenshotId] = useState(1);
 
@@ -62,7 +56,7 @@ const Screenshots = ({ screenCollapseWidth }) => {
   };
 
   return (
-    <div className={width >= screenCollapseWidth ? "screenshots-grid" : "screenshots-grid screenshots-grid-mobile"}>
+    <div className={windowWidth >= screenCollapseWidth ? "screenshots-grid" : "screenshots-grid screenshots-grid-mobile"}>
       {screenshots.map((screenshot) => {
         return (
           <img

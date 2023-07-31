@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import NavLinks from "./navlinks";
 import Icon from "../icons/Icon.png";
+import { setWindowWidth } from "../../redux/actions";
+import { useSelector, useDispatch } from "react-redux";
 
-const NavBar = ({ location, screenCollapseWidth, stickyClass }) => {
-  const [width, setWidth] = useState(window.innerWidth);
+const NavBar = ({ stickyClass }) => {
+  const windowWidth = useSelector((state) => state.windowWidth);
+  const screenCollapseWidth = useSelector((state) => state.screenCollapseWidth);
+  const dispatch = useDispatch();
+
   const updateDimensions = () => {
-    setWidth(window.innerWidth);
+    dispatch(setWindowWidth(window.innerWidth));
   };
   useEffect(() => {
     window.addEventListener("resize", updateDimensions);
@@ -15,7 +20,7 @@ const NavBar = ({ location, screenCollapseWidth, stickyClass }) => {
   }, []);
 
   return (
-    <nav className={"navbar navbar-dark bg-dark" + stickyClass + (width >= screenCollapseWidth ? " navbar-expand" : "")}>
+    <nav className={"navbar navbar-dark bg-dark" + stickyClass + (windowWidth >= screenCollapseWidth ? " navbar-expand" : "")}>
       <div className="container">
         <div className="navbar-brand-container">
           <a className="navbar-icon" href="#/">
@@ -29,8 +34,8 @@ const NavBar = ({ location, screenCollapseWidth, stickyClass }) => {
           </a>
         </div>
 
-        {width >= screenCollapseWidth ? (
-          <NavLinks location={location} />
+        {windowWidth >= screenCollapseWidth ? (
+          <NavLinks />
         ) : (
           <>
             <button
@@ -44,7 +49,7 @@ const NavBar = ({ location, screenCollapseWidth, stickyClass }) => {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <NavLinks location={location} />
+            <NavLinks />
           </>
         )}
       </div>

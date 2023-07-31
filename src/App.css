@@ -91,7 +91,6 @@ body {
 }
 
 
-
 .faq p {
   color: lightgrey;
   word-wrap: break-word;
@@ -213,6 +212,15 @@ body {
 }
 .artwork-shortcuts-esc {
   color: white !important;
+}
+.artwork-arrows {
+  cursor: pointer;
+  position: absolute;
+  font-size: 48px;
+  color:lightgrey
+}
+.artwork-arrows i:hover {
+  color: white
 }
 
 

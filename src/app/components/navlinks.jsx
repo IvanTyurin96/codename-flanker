@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-const NavLinks = ({ location }) => {
-  const [route, setRoute] = useState(null);
-  useEffect(() => setRoute(location.pathname), [location]);
+const NavLinks = () => {
+  const route = useLocation().pathname;
+
   return (
     <div id="navbar" className="collapse navbar-collapse">
       <ul id="navbar-list" className="navbar-nav me-auto">

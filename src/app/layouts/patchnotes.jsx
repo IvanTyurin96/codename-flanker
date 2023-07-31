@@ -6,6 +6,7 @@ const Patchnotes = () => {
   const patchnotes = api.patchnotes.fetchAll();
 
   const [page, setPage] = useState(patchnotes[0]._id);
+
   return (
     <div className="patchnotes d-flex pt-3">
       <div>
