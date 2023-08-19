@@ -1,6 +1,10 @@
-import Screenshots from "../components/screenshots";
+import ScreenshotsGrid from "../components/screenshotsGrid";
+import api from "../api";
 
 const Home = () => {
+  const screenshots = api.screenshots.fetchAll();
+  const limitedScreenshots = screenshots.slice(0, 8);
+
   return (
     <>
       <div className="pt-3 pb-3">
@@ -34,7 +38,7 @@ const Home = () => {
           Join our Discord server: <a href="https://discord.gg/codename-flanker-community-839196573228335185">Click</a>
         </p>
         <div className="mt-2">
-          <Screenshots />
+          <ScreenshotsGrid screenshots={limitedScreenshots} isCarousel={true} />
         </div>
       </div>
     </>

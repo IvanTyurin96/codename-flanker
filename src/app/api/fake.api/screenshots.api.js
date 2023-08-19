@@ -31,6 +31,34 @@ const screenshots = [
     _id: "8",
     path: "screenshot-8.jpg",
   },
+  {
+    _id: "9",
+    path: "screenshot-9.jpg",
+  },
+  {
+    _id: "10",
+    path: "screenshot-10.jpg",
+  },
+  {
+    _id: "11",
+    path: "screenshot-11.jpg",
+  },
+  {
+    _id: "12",
+    path: "screenshot-12.jpg",
+  },
+  {
+    _id: "13",
+    path: "screenshot-13.jpg",
+  },
+  {
+    _id: "14",
+    path: "screenshot-14.jpg",
+  },
+  {
+    _id: "15",
+    path: "screenshot-15.jpg",
+  },
 ];
 
 const fetchAll = () => {

@@ -240,12 +240,12 @@ body {
 .screenshots-grid-mobile {
   grid-template-columns: repeat(2, calc((100% - (4px * 1)) / 2));
 }
-.screenshots-image {
+.screenshots-grid-image {
   max-width: 100%;
   height: auto;
   cursor: pointer;
 }
-.screenshots-open-background {
+.screenshots-grid-open-background {
   position: fixed;
   top: 0;
   left: 0;
@@ -259,7 +259,7 @@ body {
   justify-content: center;
   z-index: 1040;
 }
-.screenshots-open-container {
+.screenshots-grid-open-container {
   max-width: 80%;
   height: auto;
   display: flex;
@@ -267,40 +267,40 @@ body {
   justify-content: center;
   position: relative;
 }
-.screenshots-open-image {
+.screenshots-grid-open-image {
   max-width: 100%;
   height: auto;
 }
-.screenshots-open-close-button {
+.screenshots-grid-open-close-button {
   position: absolute;
   top: 8px;
   right: 8px;
   font-size: 24px;
 }
-.screenshots-open-arrow-button {
+.screenshots-grid-open-arrow-button {
   position: absolute;
 }
-.screenshots-open-arrow-button i {
+.screenshots-grid-open-arrow-button i {
  font-size: 32px;
  color: lightgrey;
  cursor: pointer;
 }
-.screenshots-open-arrow-button i:hover {
+.screenshots-grid-open-arrow-button i:hover {
   color: white
 }
-.screenshots-carousel {
+.screenshots-grid-carousel {
   position: absolute;
   bottom: 8px;
   display: flex;
   justify-content: space-between;
 }
-.screenshots-carousel-circles {
+.screenshots-grid-carousel-circles {
   width: 12px;
   height: 12px;
   background-color: grey;
   border-radius: 50%;
   margin: 0px 4px;
 }
-.screenshots-carousel-circles-selected {
+.screenshots-grid-carousel-circles-selected {
   background-color: white;
 }

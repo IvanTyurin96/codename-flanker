@@ -642,6 +642,39 @@ const artworks = [
                   Polygons: 5641
                   Triangles: 12494`,
   },
+  {
+    _id: "30",
+    name: 'FAB-500 M-62NV "Bearoar"',
+    thumbnail: "FAB-500_M-62NV_3.jpg",
+    images: [
+      { image: "FAB-500_M-62NV_1.jpg", description: "" },
+      { image: "FAB-500_M-62NV_2.jpg", description: "" },
+      { image: "FAB-500_M-62NV_4.jpg", description: "" },
+      { image: "FAB-500_M-62NV_5.jpg", description: "" },
+      { image: "FAB-500_M-62NV_6.jpg", description: "" },
+      { image: "FAB-500_M-62NV_7.jpg", description: "" },
+      { image: "FAB-500_M-62NV_8.jpg", description: "Deployed state" },
+      { image: "FAB-500_M-62NV_9.jpg", description: "" },
+      { image: "FAB-500_M-62NV_10.jpg", description: "" },
+      { image: "FAB-500_M-62NV_11.jpg", description: "" },
+      { image: "FAB-500_M-62NV_12.jpg", description: "" },
+      { image: "FAB-500_M-62NV_13.jpg", description: "" },
+      { image: "FAB-500_M-62NV_14.jpg", description: "" },
+      { image: "FAB-500_M-62NV_15.jpg", description: "" },
+    ],
+    artistId: "1",
+    description: `This is first fiction weapon in my weapon pack based on FAB-500 M-62 and Mk-82 Snakeye. I was inspired by Mk-82 umbrella brake and wanted to make something similar in Soviet bombs.
+                  This model animated and have LODS.
+                  Triangles count:
+                  Base model: 12752
+                  LOD_0 (~82% polygons): 10816
+                  LOD_1 (~65% polygons): 8442
+                  LOD_2 (~47% polygons): 5894
+                  LOD_3 (~30% polygons): 3242
+                  Model have one material and texture 2048x2048.
+                  Base model and LODS are skinned by bones (bones control deployable umbrella system of bomb).
+                  This model have been created for DCS World Community Su-30 Mod. Project details: <a className="link-primary" href="https://discord.gg/sbw8A5Mg75">https://discord.gg/sbw8A5Mg75</a>`,
+  },
 ];
 
 const fetchAll = () => {

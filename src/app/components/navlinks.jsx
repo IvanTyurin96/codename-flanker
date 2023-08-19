@@ -39,6 +39,11 @@ const NavLinks = () => {
             Patchnotes
           </a>
         </li>
+        <li className="nav-item">
+          <a href="#/screenshots" className={"nav-link" + (route === "/screenshots" ? " active" : "")}>
+            Screenshots
+          </a>
+        </li>
       </ul>
     </div>
   );
