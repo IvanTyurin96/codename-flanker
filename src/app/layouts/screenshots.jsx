@@ -7,7 +7,7 @@ const Screenshots = () => {
   return (
     <>
       <div className="pt-3 pb-3">
-        <ScreenshotsGrid screenshots={screenshots} isCarousel={true} />
+        <ScreenshotsGrid screenshots={screenshots} isCarousel={false} />
       </div>
     </>
   );
