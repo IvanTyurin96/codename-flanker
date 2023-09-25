@@ -87,7 +87,7 @@ const ScreenshotsGrid = ({ screenshots, isCarousel }) => {
           <img
             key={screenshot._id}
             className="screenshots-grid-image"
-            src={require(`../api/fake.api/img/${screenshot.path}`)}
+            src={require(`../api/fake.api/img/${screenshot.thumbnail}`)}
             onClick={() => {
               screenshotOpenClick(screenshot._id, screenshot.path);
             }}
