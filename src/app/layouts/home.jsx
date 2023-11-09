@@ -1,9 +1,30 @@
 import ScreenshotsGrid from "../components/screenshotsGrid";
 import api from "../api";
+import React, { useState, useEffect } from "react";
 
 const Home = () => {
-  const screenshots = api.screenshots.fetchAll();
+  const [screenshots, setScreenshots] = useState([]);
   const limitedScreenshots = screenshots.slice(0, 8);
+
+  function ShowScreenshots() {
+    if(screenshots.length > 0) {
+      return (
+        <ScreenshotsGrid screenshots={limitedScreenshots} isCarousel={true} />
+      );
+    } else {
+      return (
+        <>
+          Loading screenshots...
+        </>
+      );
+    }
+  }
+
+  useEffect(() => {
+    fetch(`${api.webApi()}/v1/screenshots`)
+      .then((response) => response.json())
+      .then((data) => setScreenshots(data));
+  }, []);
 
   return (
     <>
@@ -12,7 +33,7 @@ const Home = () => {
           Codename Flanker Su-30 - A <strong>free</strong> community mod for DCS World.
         </p>
         <p className="mt-2 mb-2">
-          The mod has already been released and you can download the latest version from <a href="#/download">download page</a>.
+          The mod has already been released and you can download the latest version from <a href="/download">download page</a>.
         </p>
         <p className="mt-2 mb-2">It has a few modifications in game, but primary all Su-30 variants are separated into two types:</p>
         <ul className="mt-2 mb-2">
@@ -38,7 +59,7 @@ const Home = () => {
           Join our Discord server: <a href="https://discord.gg/codename-flanker-community-839196573228335185">Click</a>
         </p>
         <div className="mt-2">
-          <ScreenshotsGrid screenshots={limitedScreenshots} isCarousel={true} />
+          {ShowScreenshots()}
         </div>
       </div>
     </>

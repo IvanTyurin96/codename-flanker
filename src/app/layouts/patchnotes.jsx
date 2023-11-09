@@ -1,30 +1,42 @@
 import api from "../api";
-import React, { useState } from "react";
-import Patch from "../components/patch";
+import React, { useState, useEffect } from "react";
+import Patchnote from "../components/patchnote";
 
-const Patchnotes = () => {
-  const patchnotes = api.patchnotes.fetchAll();
+const Patchnotes = ({ match }) => {
+  const patchnoteId = match.params.patchnoteId;
+  console.log(patchnoteId);
 
-  const [page, setPage] = useState(patchnotes[0]._id);
+  const [patchnotes, setPatchnotes] = useState([]);
+  const [page, setPage] = useState(3);
 
-  return (
-    <div className="patchnotes d-flex pt-3">
-      <div>
-        <ul className="patchnotes-list border border-dark p-2 m-0">
-          {patchnotes.map((patchnote) => {
-            return (
-              <li key={patchnote._id}>
-                <a href="#/patchnotes" className="link-primary" onClick={() => setPage(patchnote._id)}>
-                  {patchnote.version}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+  useEffect(() => {
+    fetch(`${api.webApi()}/v1/patchnotes`)
+      .then((response) => response.json())
+      .then((data) => setPatchnotes(data));
+  }, []);
+
+  if (patchnotes.length > 0) {
+    return (
+      <div className="patchnotes d-flex pt-3">
+        <div>
+          <ul className="patchnotes-list border border-dark p-2 m-0">
+            {patchnotes.map((patchnote) => {
+              return (
+                <li key={patchnote.id}>
+                  <a href="/patchnotes" className="link-primary" onClick={() => setPage(patchnote.id)}>
+                    {patchnote.version}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <Patchnote id={page} patchnotes={patchnotes} />
       </div>
-      <Patch _id={page} patchnotes={patchnotes} />
-    </div>
-  );
+    );
+  } else {
+    return <div className="patchnotes d-flex pt-3">Loading...</div>;
+  }
 };
 
 export default Patchnotes;

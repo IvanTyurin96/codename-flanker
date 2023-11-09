@@ -37,6 +37,7 @@ function App() {
           <Route path="/gallery/:artworkId" render={(props) => <Artwork {...props} />} />
           <Route path="/gallery" component={Gallery} />
           <Route path="/faq" component={Faq} />
+          <Route path="/patchnotes/:patchnoteId" render={(props) => <Patchnotes {...props} />} />
           <Route path="/patchnotes" component={Patchnotes} />
           <Route path="/screenshots" component={Screenshots} />
           <Route path="/" component={Home} />

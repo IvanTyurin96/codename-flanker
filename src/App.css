@@ -105,10 +105,10 @@ body {
 }
 
 
-.patch {
+.patchnote {
   list-style-type: initial !important;
 }
-.patch li {
+.patchnote li {
   color: lightgrey;
 }
 

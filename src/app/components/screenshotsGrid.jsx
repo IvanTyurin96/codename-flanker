@@ -1,3 +1,4 @@
+import api from "../api";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
@@ -11,7 +12,7 @@ const ScreenshotsGrid = ({ screenshots, isCarousel }) => {
 
   const screenshotOpenClick = (id) => {
     setScreenshotId(parseInt(id));
-    setScreenshotPath(screenshots.find((element) => element._id === id.toString()).path);
+    setScreenshotPath(screenshots.find((element) => element.id === id).path);
     setScreenshotZoom(true);
     checkArrowsTransparent(id);
   };
@@ -68,9 +69,9 @@ const ScreenshotsGrid = ({ screenshots, isCarousel }) => {
           {screenshots.map((screenshot) => {
             return (
               <div
-                key={screenshot._id}
+                key={screenshot.id}
                 className={
-                  "screenshots-grid-carousel-circles" + (parseInt(screenshot._id) === screenshotId ? " screenshots-grid-carousel-circles-selected" : "")
+                  "screenshots-grid-carousel-circles" + (parseInt(screenshot.id) === screenshotId ? " screenshots-grid-carousel-circles-selected" : "")
                 }
               ></div>
             );
@@ -85,18 +86,18 @@ const ScreenshotsGrid = ({ screenshots, isCarousel }) => {
       {screenshots.map((screenshot) => {
         return (
           <img
-            key={screenshot._id}
+            key={screenshot.id}
             className="screenshots-grid-image"
-            src={require(`../api/fake.api/img/${screenshot.thumbnail}`)}
+            src={screenshot.thumbnailBytes}
             onClick={() => {
-              screenshotOpenClick(screenshot._id, screenshot.path);
+              screenshotOpenClick(screenshot.id, screenshot.path);
             }}
-          ></img>
+          >{}</img>
         );
       })}
       <div className={"screenshots-grid-open-background " + (screenshotZoom ? "" : " d-none")}>
         <div className="screenshots-grid-open-container">
-          <img className="screenshots-grid-open-image" src={require(`../api/fake.api/img/${screenshotPath}`)}></img>
+          <img className="screenshots-grid-open-image" src={`${api.webApi()}/screenshots/${screenshotPath}`}></img>
           <button
             type="button"
             className="btn-close btn-close-white btn-lg screenshots-grid-open-close-button"

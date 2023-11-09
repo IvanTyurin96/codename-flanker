@@ -23,10 +23,10 @@ const NavBar = ({ stickyClass }) => {
     <nav className={"navbar navbar-dark bg-dark" + stickyClass + (windowWidth >= screenCollapseWidth ? " navbar-expand" : "")}>
       <div className="container">
         <div className="navbar-brand-container">
-          <a className="navbar-icon" href="#/">
+          <a className="navbar-icon" href="/">
             <img src={Icon} width="40" height="40" alt=""></img>
           </a>
-          <a className="navbar-brand" href="#/">
+          <a className="navbar-brand" href="/">
             Codename{" "}
             <strong>
               <span style={{ color: "var(--flanker-color)" }}>Flanker</span>

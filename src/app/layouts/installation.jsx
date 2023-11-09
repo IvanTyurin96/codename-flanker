@@ -6,7 +6,7 @@ const Installation = () => {
       <ol className="mb-0">
         <li>
           Follow the links to Google Drive on{" "}
-          <a className="link-primary" href="#/download">
+          <a className="link-primary" href="/download">
             download page
           </a>{" "}
           and download zip-archive with mod.{" "}
