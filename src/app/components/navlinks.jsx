@@ -5,6 +5,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 const NavLinks = () => {
   const route = useLocation().pathname;
+  console.log(route);
 
   return (
     <div id="navbar" className="collapse navbar-collapse">
@@ -35,7 +36,7 @@ const NavLinks = () => {
           </a>
         </li>
         <li className="nav-item">
-          <a href="/patchnotes" className={"nav-link" + (route === "/patchnotes" ? " active" : "")}>
+          <a href="/patchnotes" className={"nav-link" + (route.toString().includes("/patchnotes") ? " active" : "")}>
             Patchnotes
           </a>
         </li>

@@ -1,29 +1,43 @@
 import ScreenshotsGrid from "../components/screenshotsGrid";
-import api from "../api";
+import LoadingSpinner from "../components/loadingSpinner";
 import React, { useState, useEffect } from "react";
+import { fetchApi } from "../utils/apiFetcher"
 
 const Home = () => {
   const [screenshots, setScreenshots] = useState([]);
   const limitedScreenshots = screenshots.slice(0, 8);
+  const [fetchError, setFetchError] = useState(null);
 
-  function ShowScreenshots() {
+  function showScreenshots() {
+    if(fetchError === null) {
+      return renderData();
+    } else {
+      return renderError();
+    }
+  }
+
+  function renderData() {
     if(screenshots.length > 0) {
       return (
         <ScreenshotsGrid screenshots={limitedScreenshots} isCarousel={true} />
       );
     } else {
       return (
-        <>
-          Loading screenshots...
-        </>
+        <div className="d-flex flex-column align-items-center">
+          <LoadingSpinner />
+        </div>
       );
     }
   }
 
+  function renderError() {
+    return (
+      <div className="error">{fetchError.toString()}</div>
+    );
+  }
+
   useEffect(() => {
-    fetch(`${api.webApi()}/v1/screenshots`)
-      .then((response) => response.json())
-      .then((data) => setScreenshots(data));
+    fetchApi("v1/screenshots", setScreenshots, setFetchError);
   }, []);
 
   return (
@@ -59,7 +73,7 @@ const Home = () => {
           Join our Discord server: <a href="https://discord.gg/codename-flanker-community-839196573228335185">Click</a>
         </p>
         <div className="mt-2">
-          {ShowScreenshots()}
+          {showScreenshots()}
         </div>
       </div>
     </>
