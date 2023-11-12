@@ -5,7 +5,6 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 const NavLinks = () => {
   const route = useLocation().pathname;
-  console.log(route);
 
   return (
     <div id="navbar" className="collapse navbar-collapse">

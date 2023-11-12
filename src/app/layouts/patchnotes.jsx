@@ -1,27 +1,32 @@
 import React, { useState, useEffect } from "react";
 import Patchnote from "../components/patchnote";
 import LoadingSpinner from "../components/loadingSpinner";
-import { fetchApi } from "../utils/apiFetcher"
-
+import { fetchApi } from "../utils/apiFetcher";
 
 const Patchnotes = ({ match }) => {
-  const patchnoteId = match.params.patchnoteId;
-  console.log(patchnoteId === null);
+  const patchnoteId = parseInt(match.params.patchnoteId);
 
   const [patchnotes, setPatchnotes] = useState([]);
   const [fetchError, setFetchError] = useState(null);
-  const [page, setPage] = useState(3);
 
   function show() {
-    if(fetchError === null) {
+    if (fetchError === null) {
       return renderData();
     } else {
       return renderError();
     }
   }
 
+  function getPatchnoteId() {
+    if (patchnoteId !== null && Number.isInteger(patchnoteId)) {
+      return patchnoteId;
+    } else {
+      return patchnotes.length;
+    }
+  }
+
   function renderData() {
-    if(patchnotes.length > 0) {
+    if (patchnotes.length > 0) {
       return (
         <div className="patchnotes d-flex pt-3">
           <div>
@@ -29,7 +34,7 @@ const Patchnotes = ({ match }) => {
               {patchnotes.map((patchnote) => {
                 return (
                   <li key={patchnote.id}>
-                    <a href={`/patchnotes/${patchnote.id}`} className="link-primary" onClick={() => setPage(patchnote.id)}>
+                    <a href={`/patchnotes/${patchnote.id}`} className="link-primary">
                       {patchnote.version}
                     </a>
                   </li>
@@ -37,7 +42,7 @@ const Patchnotes = ({ match }) => {
               })}
             </ul>
           </div>
-          <Patchnote id={page} patchnotes={patchnotes} />
+          <Patchnote id={getPatchnoteId()} patchnotes={patchnotes} />
         </div>
       );
     } else {
@@ -52,20 +57,14 @@ const Patchnotes = ({ match }) => {
   }
 
   function renderError() {
-    return (
-      <div className="error">{fetchError.toString()}</div>
-    );
+    return <div className="error">{fetchError.toString()}</div>;
   }
 
   useEffect(() => {
     fetchApi("v1/patchnotes", setPatchnotes, setFetchError);
   }, []);
 
-  return (
-    <>
-      {show()}
-    </>
-  );
+  return <>{show()}</>;
 };
 
 export default Patchnotes;

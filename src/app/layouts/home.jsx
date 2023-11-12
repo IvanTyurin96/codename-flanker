@@ -1,7 +1,7 @@
 import ScreenshotsGrid from "../components/screenshotsGrid";
 import LoadingSpinner from "../components/loadingSpinner";
 import React, { useState, useEffect } from "react";
-import { fetchApi } from "../utils/apiFetcher"
+import { fetchApi } from "../utils/apiFetcher";
 
 const Home = () => {
   const [screenshots, setScreenshots] = useState([]);
@@ -9,7 +9,7 @@ const Home = () => {
   const [fetchError, setFetchError] = useState(null);
 
   function showScreenshots() {
-    if(fetchError === null) {
+    if (fetchError === null) {
       return renderData();
     } else {
       return renderError();
@@ -17,10 +17,8 @@ const Home = () => {
   }
 
   function renderData() {
-    if(screenshots.length > 0) {
-      return (
-        <ScreenshotsGrid screenshots={limitedScreenshots} isCarousel={true} />
-      );
+    if (screenshots.length > 0) {
+      return <ScreenshotsGrid screenshots={limitedScreenshots} isCarousel={true} />;
     } else {
       return (
         <div className="d-flex flex-column align-items-center">
@@ -31,9 +29,7 @@ const Home = () => {
   }
 
   function renderError() {
-    return (
-      <div className="error">{fetchError.toString()}</div>
-    );
+    return <div className="error">{fetchError.toString()}</div>;
   }
 
   useEffect(() => {
@@ -72,9 +68,7 @@ const Home = () => {
         <p className="mt-2 mb-2">
           Join our Discord server: <a href="https://discord.gg/codename-flanker-community-839196573228335185">Click</a>
         </p>
-        <div className="mt-2">
-          {showScreenshots()}
-        </div>
+        <div className="mt-2">{showScreenshots()}</div>
       </div>
     </>
   );
