@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Patchnote from "../components/patchnote";
 import LoadingSpinner from "../components/loadingSpinner";
 import { fetchApi } from "../utils/apiFetcher";
+import { Link } from "react-router-dom";
 
 const Patchnotes = ({ match }) => {
   const [patchnoteId, setPatchnoteId] = useState(parseInt(match.params.patchnoteId));
@@ -34,15 +35,14 @@ const Patchnotes = ({ match }) => {
               {patchnotes.map((patchnote) => {
                 return (
                   <li key={patchnote.id}>
-                    <a
-                      href="javascript:void(0)"
-                      className="link-primary"
+                    <Link
+                      to={`/patchnotes/${patchnote.id}`}
                       onClick={() => {
                         setPatchnoteId(patchnote.id);
                       }}
                     >
                       {patchnote.version}
-                    </a>
+                    </Link>
                   </li>
                 );
               })}
