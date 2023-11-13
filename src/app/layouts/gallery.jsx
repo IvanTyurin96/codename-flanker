@@ -98,46 +98,53 @@ const Gallery = () => {
   }
 
   function showArtists() {
+    return (
+      <div className="mb-2 dropdown">
+        <button
+          className="btn btn-secondary dropdown-toggle bg-dark"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Artist:
+        </button>
+        <div className="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+          {renderArtistsData(artists)}
+        </div>
+      </div>
+    );
+  }
+
+  function renderArtistsData(artists) {
     if (fetchArtistsError === null) {
-      return renderArtistsData();
+      return renderArtistsList(artists);
     } else {
       return renderArtistsError();
     }
   }
-
-  function renderArtistsData() {
+  function renderArtistsList(artists) {
     if (artists.length > 0) {
       return (
-        <div className="mb-2 dropdown">
-          <button
-            className="btn btn-secondary dropdown-toggle bg-dark"
-            type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Artist:
-          </button>
-          <div className="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
-            <div key="0" className="dropdown-item d-flex">
-              <div className="artist-icon gallery-dropdown-icon me-2"></div>
-              <div>All</div>
-            </div>
-            {artists.map((artist) => {
-              return (
-                <div key={artist.id} className="dropdown-item d-flex">
-                  <img className="artist-icon gallery-dropdown-icon me-2" src={artist.iconBytes}></img>
-                  <div>{artist.name}</div>
-                </div>
-              );
-            })}
+        <>
+          <div key="0" className="dropdown-item d-flex">
+            <div className="artist-icon gallery-dropdown-icon me-2"></div>
+            <div>All</div>
           </div>
-        </div>
+          {artists.map((artist) => {
+            return (
+              <div key={artist.id} className="dropdown-item d-flex">
+                <img className="artist-icon gallery-dropdown-icon me-2" src={artist.iconBytes}></img>
+                <div>{artist.name}</div>
+              </div>
+            );
+          })}
+        </>
       );
     } else {
       return (
-        <div className="mt-2 d-flex flex-column align-items-center">
+        <div className="d-flex flex-column align-items-center">
           <LoadingSpinner />
         </div>
       );
@@ -145,7 +152,7 @@ const Gallery = () => {
   }
 
   function renderArtistsError() {
-    return <div className="error">{fetchArtistsError.toString()}</div>;
+    return <div className="error ms-2 me-2">{fetchArtistsError.toString()}</div>;
   }
 
   useEffect(() => {
