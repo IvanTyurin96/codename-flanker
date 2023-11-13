@@ -4,7 +4,7 @@ import LoadingSpinner from "../components/loadingSpinner";
 import { fetchApi } from "../utils/apiFetcher";
 
 const Patchnotes = ({ match }) => {
-  const patchnoteId = parseInt(match.params.patchnoteId);
+  const [patchnoteId, setPatchnoteId] = useState(parseInt(match.params.patchnoteId));
 
   const [patchnotes, setPatchnotes] = useState([]);
   const [fetchError, setFetchError] = useState(null);
@@ -34,7 +34,13 @@ const Patchnotes = ({ match }) => {
               {patchnotes.map((patchnote) => {
                 return (
                   <li key={patchnote.id}>
-                    <a href={`/patchnotes/${patchnote.id}`} className="link-primary">
+                    <a
+                      href="javascript:void(0)"
+                      className="link-primary"
+                      onClick={() => {
+                        setPatchnoteId(patchnote.id);
+                      }}
+                    >
                       {patchnote.version}
                     </a>
                   </li>
