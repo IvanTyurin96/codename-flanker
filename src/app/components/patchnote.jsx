@@ -1,5 +1,5 @@
 const Patchnote = ({ id, patchnotes }) => {
-  const patchnote = patchnotes.filter((item) => item.id === id)[0];
+  const patchnote = patchnotes.filter((item) => item.id == id)[0];
   function showPatchnote() {
     return (
       <div className="w-100 ps-4">

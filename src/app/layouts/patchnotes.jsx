@@ -11,7 +11,7 @@ const Patchnotes = ({ match }) => {
   const [fetchError, setFetchError] = useState(null);
 
   function show() {
-    if (fetchError === null) {
+    if (fetchError == null) {
       return renderData();
     } else {
       return renderError();
@@ -19,7 +19,7 @@ const Patchnotes = ({ match }) => {
   }
 
   function getPatchnoteId() {
-    if (patchnoteId !== null && Number.isInteger(patchnoteId)) {
+    if (patchnoteId != null && Number.isInteger(patchnoteId)) {
       return patchnoteId;
     } else {
       return patchnotes.length;
@@ -63,7 +63,7 @@ const Patchnotes = ({ match }) => {
   }
 
   function renderError() {
-    return <div className="error">{fetchError.toString()}</div>;
+    return <div className="pt-3 error">{fetchError.toString()}</div>;
   }
 
   useEffect(() => {
