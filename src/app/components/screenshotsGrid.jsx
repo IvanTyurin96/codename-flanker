@@ -1,5 +1,5 @@
 import api from "../api";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 const ScreenshotsGrid = ({ screenshots, isCarousel }) => {
@@ -12,7 +12,7 @@ const ScreenshotsGrid = ({ screenshots, isCarousel }) => {
 
   const screenshotOpenClick = (id) => {
     setScreenshotId(parseInt(id));
-    setScreenshotPath(screenshots.find((element) => element.id === id).path);
+    setScreenshotPath(screenshots.find((element) => element.id == id).path);
     setScreenshotZoom(true);
     checkArrowsTransparent(id);
   };
@@ -51,14 +51,16 @@ const ScreenshotsGrid = ({ screenshots, isCarousel }) => {
   };
 
   document.onkeydown = (e) => {
-    if (e.key === "ArrowLeft") {
-      changeImage(-1);
-    }
-    if (e.key === "ArrowRight") {
-      changeImage(1);
-    }
-    if (e.key === "Escape") {
-      screenshotCloseClick();
+    if (screenshotZoom == true) {
+      if (e.key == "ArrowLeft") {
+        changeImage(-1);
+      }
+      if (e.key == "ArrowRight") {
+        changeImage(1);
+      }
+      if (e.key == "Escape") {
+        screenshotCloseClick();
+      }
     }
   };
 
@@ -70,9 +72,7 @@ const ScreenshotsGrid = ({ screenshots, isCarousel }) => {
             return (
               <div
                 key={screenshot.id}
-                className={
-                  "screenshots-grid-carousel-circles" + (parseInt(screenshot.id) === screenshotId ? " screenshots-grid-carousel-circles-selected" : "")
-                }
+                className={"screenshots-grid-carousel-circles" + (parseInt(screenshot.id) == screenshotId ? " screenshots-grid-carousel-circles-selected" : "")}
               ></div>
             );
           })}
@@ -92,7 +92,9 @@ const ScreenshotsGrid = ({ screenshots, isCarousel }) => {
             onClick={() => {
               screenshotOpenClick(screenshot.id, screenshot.path);
             }}
-          >{}</img>
+          >
+            {}
+          </img>
         );
       })}
       <div className={"screenshots-grid-open-background " + (screenshotZoom ? "" : " d-none")}>
