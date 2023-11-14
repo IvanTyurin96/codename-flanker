@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import LoadingSpinner from "../components/loadingSpinner";
 import { fetchApi } from "../utils/apiFetcher";
+import { Link } from "react-router-dom";
 
 const Gallery = () => {
   const screenCollapseWidth = useSelector((state) => state.screenCollapseWidth);
   const windowWidth = useSelector((state) => state.windowWidth);
+
+  const searchParams = new URLSearchParams(document.location.search);
 
   const [artworks, setArtworks] = useState([]);
   const [fetchArtworksError, setFetchArtworksError] = useState(null);
@@ -13,11 +16,13 @@ const Gallery = () => {
   const [artists, setArtists] = useState([]);
   const [fetchArtistsError, setFetchArtistsError] = useState(null);
 
-  //const sortedArtworks = useSelector((state) => state.sortedArtworks);
-  const [sortedArtworks, setSortedArtworks] = useState([]);
-  const [filteredArtworks, setFilteredArtworks] = useState(sortedArtworks);
+  // const [currentArtistId, setCurrentArtistId] = useState(null)
 
-  const [artistName, setArtistName] = useState("All");
+  //const sortedArtworks = useSelector((state) => state.sortedArtworks);
+  // const [sortedArtworks, setSortedArtworks] = useState([]);
+  // const [filteredArtworks, setFilteredArtworks] = useState(sortedArtworks);
+
+  //const [artistName, setArtistName] = useState("All");
   // const updateArtistFilter = (artistId) => {
   //   if (artistId === 0) {
   //     setFilteredArtworks(sortedArtworks);
@@ -27,6 +32,15 @@ const Gallery = () => {
   //     setArtistName(artists.find((artist) => artist.id === artistId).name);
   //   }
   // };
+
+  function getArtistId() {
+    const artistId = parseInt(searchParams.get("artist"));
+    if (artistId !== null && Number.isInteger(artistId)) {
+      return artistId;
+    } else {
+      return 0;
+    }
+  }
 
   function show() {
     return (
@@ -47,11 +61,21 @@ const Gallery = () => {
 
   function renderArtworksData() {
     if (artworks.length > 0) {
+      return showFilteredArtworks(getFilteredArtworks(getArtistId()));
+    } else {
+      return (
+        <div className="mt-2 d-flex flex-column align-items-center">
+          <LoadingSpinner />
+        </div>
+      );
+    }
+  }
+  function showFilteredArtworks(filteredArtworks) {
+    if (filteredArtworks.length > 0) {
       return (
         <div className={"mt-2" + (windowWidth >= screenCollapseWidth ? " gallery-grid" : " gallery-grid gallery-grid-mobile")}>
-          {artworks.map((artwork) => {
+          {filteredArtworks.map((artwork) => {
             const artist = artists.find((element) => element.id === artwork.artistId);
-            console.log(artist);
             return (
               <div key={artwork.id} className="gallery-thumbnail-container" href="/test">
                 <img className="gallery-thumbnail" src={artwork.thumbnailBytes} alt="Artwork image" />
@@ -71,11 +95,14 @@ const Gallery = () => {
         </div>
       );
     } else {
-      return (
-        <div className="mt-2 d-flex flex-column align-items-center">
-          <LoadingSpinner />
-        </div>
-      );
+      return <div className="mt-2">No one artwork found for artist = {getArtistId()}</div>;
+    }
+  }
+  function getFilteredArtworks(artistId) {
+    if (artistId == 0) {
+      return artworks;
+    } else {
+      return artworks.filter((element) => element.artistId === artistId);
     }
   }
   function getArtistIcon(artist) {
@@ -128,16 +155,16 @@ const Gallery = () => {
     if (artists.length > 0) {
       return (
         <>
-          <div key="0" className="dropdown-item d-flex">
+          <Link to={`/gallery?artist=0`} key="0" className="dropdown-item d-flex">
             <div className="artist-icon gallery-dropdown-icon me-2"></div>
             <div>All</div>
-          </div>
+          </Link>
           {artists.map((artist) => {
             return (
-              <div key={artist.id} className="dropdown-item d-flex">
+              <Link to={`/gallery?artist=${artist.id}`} key={artist.id} className="dropdown-item d-flex">
                 <img className="artist-icon gallery-dropdown-icon me-2" src={artist.iconBytes}></img>
                 <div>{artist.name}</div>
-              </div>
+              </Link>
             );
           })}
         </>
