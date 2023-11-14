@@ -9,7 +9,7 @@ const Home = () => {
   const [fetchError, setFetchError] = useState(null);
 
   function showScreenshots() {
-    if (fetchError === null) {
+    if (fetchError == null) {
       return renderData();
     } else {
       return renderError();
