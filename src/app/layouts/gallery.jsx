@@ -57,7 +57,7 @@ const Gallery = () => {
 
   function getArtistIdFromQuery() {
     const artistId = parseInt(searchParams.get("artist"));
-    if (artistId !== null && Number.isInteger(artistId)) {
+    if (artistId != null && Number.isInteger(artistId)) {
       return artistId;
     } else {
       return 0;
@@ -65,7 +65,7 @@ const Gallery = () => {
   }
 
   function renderArtistsData(artists) {
-    if (fetchArtistsError === null) {
+    if (fetchArtistsError == null) {
       return renderArtistsList(artists);
     } else {
       return renderArtistsError();
@@ -104,7 +104,7 @@ const Gallery = () => {
   }
 
   function showArtworks() {
-    if (fetchArtworksError === null) {
+    if (fetchArtworksError == null) {
       return renderArtworksData();
     } else {
       return renderArtworksError();
@@ -128,7 +128,7 @@ const Gallery = () => {
       return (
         <div className={"mt-2" + (windowWidth >= screenCollapseWidth ? " gallery-grid" : " gallery-grid gallery-grid-mobile")}>
           {filteredArtworks.map((artwork) => {
-            const artist = artists.find((element) => element.id === artwork.artistId);
+            const artist = artists.find((element) => element.id == artwork.artistId);
             return (
               <div key={artwork.id} className="gallery-thumbnail-container" href="/test">
                 <img className="gallery-thumbnail" src={artwork.thumbnailBytes} alt="Artwork image" />
@@ -156,7 +156,7 @@ const Gallery = () => {
     if (artistId == 0) {
       return artworks;
     } else {
-      return artworks.filter((element) => element.artistId === artistId);
+      return artworks.filter((element) => element.artistId == artistId);
     }
   }
 
