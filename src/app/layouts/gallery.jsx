@@ -83,7 +83,7 @@ const Gallery = () => {
           {artists.map((artist) => {
             return (
               <Link to={`/gallery?artist=${artist.id}`} key={artist.id} className="dropdown-item d-flex">
-                <img className="artist-icon gallery-dropdown-icon me-2" src={artist.iconBytes}></img>
+                <img className="artist-icon gallery-dropdown-icon me-2" src={artist.iconBytes} alt={artist.icon}></img>
                 <div>{artist.name}</div>
               </Link>
             );
@@ -130,12 +130,12 @@ const Gallery = () => {
           {filteredArtworks.map((artwork) => {
             const artist = artists.find((element) => element.id == artwork.artistId);
             return (
-              <div key={artwork.id} className="gallery-thumbnail-container" href="/test">
-                <img className="gallery-thumbnail" src={artwork.thumbnailBytes} alt="Artwork image" />
+              <div key={artwork.id} className="gallery-thumbnail-container">
+                <img className="gallery-thumbnail" src={artwork.thumbnailBytes} alt={artwork.thumbnail} />
                 <div className="gallery-selected">
                   <a className="gallery-thumbnail-anchor" href={"/gallery/" + artwork.id}></a>
                   <div className="d-flex mb-3 mt-auto ps-3">
-                    <img className="artist-icon gallery-artist-icon" src={getArtistIcon(artist)}></img>
+                    <img className="artist-icon gallery-artist-icon" src={getArtistIcon(artist)} alt="Artist icon"></img>
                     <div className="ps-2 d-flex flex-column">
                       <h5 className="m-0">{artwork.name}</h5>
                       <h5 className="m-0 mt-auto">{getArtistName(artist)}</h5>
