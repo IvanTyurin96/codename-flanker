@@ -1,4 +1,4 @@
-import api from "../api";
+import webApi from "../api";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -99,7 +99,7 @@ const ScreenshotsGrid = ({ screenshots, isCarousel }) => {
       })}
       <div className={"screenshots-grid-open-background " + (screenshotZoom ? "" : " d-none")}>
         <div className="screenshots-grid-open-container">
-          <img className="screenshots-grid-open-image" src={`${api.webApi()}/screenshots/${screenshotPath}`}></img>
+          <img className="screenshots-grid-open-image" src={`${webApi}/screenshots/${screenshotPath}`}></img>
           <button
             type="button"
             className="btn-close btn-close-white btn-lg screenshots-grid-open-close-button"

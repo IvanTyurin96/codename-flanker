@@ -1,16 +1,16 @@
-import api from "../api";
+import webApi from "../api";
 
 export function fetchApi(path, callbackDataHook, callbackErrorHook) {
-    fetch(`${api.webApi()}/${path}`)
+  fetch(`${webApi}/${path}`)
     .then((response) => {
-      if(response.ok) {
+      if (response.ok) {
         callbackErrorHook(null);
         return response.json();
       }
-      throw new Error(response.status)
+      throw new Error(response.status);
     })
     .then((data) => callbackDataHook(data))
     .catch((error) => {
-        callbackErrorHook(error);
+      callbackErrorHook(error);
     });
 }
