@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import LoadingSpinner from "../components/loadingSpinner";
 import { fetchApi } from "../utils/apiFetcher";
 import { Link } from "react-router-dom";
+import { shuffleArray } from "../../app/utils/shuffleArray";
+import { setSortedArtworks } from "../../redux/actions";
 
 const Gallery = () => {
   const screenCollapseWidth = useSelector((state) => state.screenCollapseWidth);
   const windowWidth = useSelector((state) => state.windowWidth);
 
+  const dispatch = useDispatch();
+
   const searchParams = new URLSearchParams(document.location.search);
 
-  const [artworks, setArtworks] = useState([]);
+  const artworks = useSelector((state) => state.sortedArtworks);
   const [fetchArtworksError, setFetchArtworksError] = useState(null);
 
   const [artists, setArtists] = useState([]);
@@ -180,8 +184,14 @@ const Gallery = () => {
     return <div className="error">{fetchArtworksError.toString()}</div>;
   }
 
+  function sortAndCacheArtworks(data) {
+    dispatch(setSortedArtworks(shuffleArray(data)));
+  }
+
   useEffect(() => {
-    fetchApi("v1/artworks", setArtworks, setFetchArtworksError);
+    if (artworks.length == 0) {
+      fetchApi("v1/artworks", sortAndCacheArtworks, setFetchArtworksError);
+    }
     fetchApi("v1/artists", setArtists, setFetchArtistsError);
   }, []);
 

@@ -14,7 +14,7 @@ function screenCollapseWidth(state = 720) {
   return state;
 }
 
-function sortedArtworks(state = api.artworks.fetchAll(), action) {
+function sortedArtworks(state = [], action) {
   if (action.type === SET_SORTED_ARTWORKS) {
     return (state = action.sortedArtworks);
   }

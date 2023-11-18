@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { Link } from "react-router-dom";
 
 const NavLinks = () => {
   const route = useLocation().pathname;
@@ -25,14 +26,14 @@ const NavLinks = () => {
           </a>
         </li>
         <li className="nav-item">
-          <a href="/gallery" className={"nav-link" + (route === "/gallery" ? " active" : "")}>
+          <Link to="/gallery" className={"nav-link" + (route === "/gallery" ? " active" : "")}>
             Gallery
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a href="/faq" className={"nav-link" + (route === "/faq" ? " active" : "")}>
+          <Link to="/faq" className={"nav-link" + (route === "/faq" ? " active" : "")}>
             FAQ
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
           <a href="/patchnotes" className={"nav-link" + (route.toString().includes("/patchnotes") ? " active" : "")}>
