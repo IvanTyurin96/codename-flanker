@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Patchnote from "../components/patchnote";
 import LoadingSpinner from "../components/loadingSpinner";
 import { fetchApi } from "../utils/apiFetcher";
 import { Link } from "react-router-dom";
+import { setPatchnotes } from "../../redux/actions";
 
 const Patchnotes = ({ match }) => {
   const [patchnoteId, setPatchnoteId] = useState(parseInt(match.params.patchnoteId));
 
-  const [patchnotes, setPatchnotes] = useState([]);
+  const dispatch = useDispatch();
+
+  const patchnotes = useSelector((state) => state.patchnotes);
   const [fetchError, setFetchError] = useState(null);
 
   function show() {
@@ -66,8 +70,14 @@ const Patchnotes = ({ match }) => {
     return <div className="pt-3 error">{fetchError.toString()}</div>;
   }
 
+  function cachePatchnotes(data) {
+    dispatch(setPatchnotes(data));
+  }
+
   useEffect(() => {
-    fetchApi("v1/patchnotes", setPatchnotes, setFetchError);
+    if (patchnotes.length == 0) {
+      fetchApi("v1/patchnotes", cachePatchnotes, setFetchError);
+    }
   }, []);
 
   return <>{show()}</>;

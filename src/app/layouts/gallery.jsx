@@ -137,7 +137,7 @@ const Gallery = () => {
               <div key={artwork.id} className="gallery-thumbnail-container">
                 <img className="gallery-thumbnail" src={artwork.thumbnailBytes} alt={artwork.thumbnail} />
                 <div className="gallery-selected">
-                  <a className="gallery-thumbnail-anchor" href={"/gallery/" + artwork.id}></a>
+                  <Link className="gallery-thumbnail-anchor" to={"/gallery/" + artwork.id}></Link>
                   <div className="d-flex mb-3 mt-auto ps-3">
                     <img className="artist-icon gallery-artist-icon" src={getArtistIcon(artist)} alt="Artist icon"></img>
                     <div className="ps-2 d-flex flex-column">

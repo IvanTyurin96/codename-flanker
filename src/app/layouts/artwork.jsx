@@ -3,15 +3,21 @@ import LoadingSpinner from "../components/loadingSpinner";
 import { fetchApi } from "../utils/apiFetcher";
 import { useHistory, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Artwork = ({ match }) => {
   const screenCollapseWidth = useSelector((state) => state.screenCollapseWidth);
   const windowWidth = useSelector((state) => state.windowWidth);
 
+  const artworks = useSelector((state) => state.sortedArtworks);
+
   const artworkId = parseInt(match.params.artworkId);
 
   const [artwork, setArtwork] = useState(null);
   const [fetchError, setFetchError] = useState(null);
+
+  const [leftArrow, setLeftArrow] = useState(true);
+  const [rightArrow, setRightArrow] = useState(true);
 
   function show() {
     if (fetchError == null) {
@@ -27,12 +33,7 @@ const Artwork = ({ match }) => {
       return (
         <div className={"d-flex pt-3" + (windowWidth >= screenCollapseWidth ? " flex-row" : " flex-column")}>
           <div className={"d-flex flex-column position-relative" + (windowWidth >= screenCollapseWidth ? " me-4" : "")}>
-            {/* <div className={"artwork-arrows" + (leftArrow ? "" : " d-none")} style={{ top: "250px", left: "-12px" }} onClick={() => changeImage(-1)}>
-              <i className="bi bi-arrow-left-short"></i>
-            </div>
-            <div className={"artwork-arrows" + (rightArrow ? "" : " d-none")} style={{ top: "250px", right: "-12px" }} onClick={() => changeImage(1)}>
-              <i className="bi bi-arrow-right-short"></i>
-            </div> */}
+            {renderArrows()}
             {artwork.images.map((image, imageIndex) => {
               return (
                 <div key={imageIndex} className="mb-3">
@@ -97,6 +98,40 @@ const Artwork = ({ match }) => {
     }
   }
 
+  function renderArrows() {
+    if (artworks.length > 0) {
+      return (
+        <>
+          <div className={"artwork-arrows" + (leftArrow ? "" : " d-none")} style={{ top: "250px", left: "-12px" }}>
+            <i className="bi bi-arrow-left-short"></i>
+          </div>
+          <div className={"artwork-arrows" + (rightArrow ? "" : " d-none")} style={{ top: "250px", right: "-12px" }}>
+            <i className="bi bi-arrow-right-short"></i>
+          </div>
+        </>
+      );
+    }
+  }
+
+  function getNextArtworkId(value) {
+    const currentArtworkIndex = artworks.findIndex((element) => element.id == artworkId);
+    var newArtworkIndex = currentArtworkIndex + value;
+    if (newArtworkIndex <= 0) {
+      newArtworkIndex = 0;
+      setLeftArrow(false);
+    } else {
+      setLeftArrow(true);
+    }
+    if (newArtworkIndex >= artworks.length - 1) {
+      newArtworkIndex = artworks.length - 1;
+      setRightArrow(false);
+    } else {
+      setRightArrow(true);
+    }
+    const newArtworkId = artworks[newArtworkIndex].id;
+    return newArtworkId;
+  }
+
   function renderError() {
     return <div className="pt-3 error">{fetchError.toString()}</div>;
   }
@@ -122,25 +157,6 @@ const Artwork = ({ match }) => {
   //   changeImage(0);
   // }, []);
 
-  // const changeImage = (value) => {
-  //   const currentArtworkIndex = sortedArtworks.findIndex((element) => element._id === artworkId);
-  //   var newArtworkIndex = currentArtworkIndex + value;
-  //   if (newArtworkIndex <= 0) {
-  //     newArtworkIndex = 0;
-  //     setLeftArrow(false);
-  //   } else {
-  //     setLeftArrow(true);
-  //   }
-  //   if (newArtworkIndex >= sortedArtworks.length - 1) {
-  //     newArtworkIndex = sortedArtworks.length - 1;
-  //     setRightArrow(false);
-  //   } else {
-  //     setRightArrow(true);
-  //   }
-  //   const newArtworkId = sortedArtworks[newArtworkIndex]._id;
-  //   history.push(`/gallery/${newArtworkId}`);
-  // };
-
   // if (route === `/gallery/${artworkId}`) {
   //   document.onkeydown = (e) => {
   //     if (e.key === "Escape") {
@@ -157,7 +173,7 @@ const Artwork = ({ match }) => {
 
   useEffect(() => {
     fetchApi(`v1/artworks/${artworkId}`, setArtwork, setFetchError);
-  }, []);
+  }, [artworkId]);
 
   return show();
 

@@ -26,7 +26,7 @@ const NavLinks = () => {
           </a>
         </li>
         <li className="nav-item">
-          <Link to="/gallery" className={"nav-link" + (route === "/gallery" ? " active" : "")}>
+          <Link to="/gallery" className={"nav-link" + (route.toString().includes("/gallery") ? " active" : "")}>
             Gallery
           </Link>
         </li>
@@ -36,9 +36,9 @@ const NavLinks = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <a href="/patchnotes" className={"nav-link" + (route.toString().includes("/patchnotes") ? " active" : "")}>
+          <Link to="/patchnotes" className={"nav-link" + (route.toString().includes("/patchnotes") ? " active" : "")}>
             Patchnotes
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
           <a href="/screenshots" className={"nav-link" + (route === "/screenshots" ? " active" : "")}>
