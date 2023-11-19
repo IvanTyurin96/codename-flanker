@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { SET_WINDOW_WIDTH, SET_SORTED_ARTWORKS, SET_PATCHNOTES } from "./types";
+import { SET_WINDOW_WIDTH, SET_SORTED_ARTWORKS, SET_PATCHNOTES, SET_SCREENSHOTS } from "./types";
 
 function windowWidth(state = window.innerWidth, action) {
   if (action.type === SET_WINDOW_WIDTH) {
@@ -27,9 +27,17 @@ function patchnotes(state = [], action) {
   return state;
 }
 
+function screenshots(state = [], action) {
+  if (action.type === SET_SCREENSHOTS) {
+    return (state = action.screenshots);
+  }
+  return state;
+}
+
 export const rootReducer = combineReducers({
   windowWidth: windowWidth,
   screenCollapseWidth: screenCollapseWidth,
   sortedArtworks: sortedArtworks,
   patchnotes: patchnotes,
+  screenshots: screenshots,
 });

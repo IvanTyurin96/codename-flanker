@@ -1,4 +1,4 @@
-import { SET_WINDOW_WIDTH, SET_SORTED_ARTWORKS, SET_PATCHNOTES } from "./types";
+import { SET_WINDOW_WIDTH, SET_SORTED_ARTWORKS, SET_PATCHNOTES, SET_SCREENSHOTS } from "./types";
 
 export function setWindowWidth(windowWidth) {
   return {
@@ -18,5 +18,12 @@ export function setPatchnotes(patchnotes) {
   return {
     type: SET_PATCHNOTES,
     patchnotes: patchnotes,
+  };
+}
+
+export function setScreenshots(screenshots) {
+  return {
+    type: SET_SCREENSHOTS,
+    screenshots: screenshots,
   };
 }

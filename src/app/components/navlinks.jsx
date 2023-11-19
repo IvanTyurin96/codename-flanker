@@ -11,19 +11,19 @@ const NavLinks = () => {
     <div id="navbar" className="collapse navbar-collapse">
       <ul id="navbar-list" className="navbar-nav me-auto">
         <li className="nav-item">
-          <a href="/" className={"nav-link" + (route === "/" || route === "/home" ? " active" : "")}>
+          <Link to="/" className={"nav-link" + (route === "/" || route === "/home" ? " active" : "")}>
             Home
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a href="/download" className={"nav-link" + (route === "/download" ? " active" : "")}>
+          <Link to="/download" className={"nav-link" + (route === "/download" ? " active" : "")}>
             Download
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a href="/installation" className={"nav-link" + (route === "/installation" ? " active" : "")}>
+          <Link to="/installation" className={"nav-link" + (route === "/installation" ? " active" : "")}>
             Installation
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
           <Link to="/gallery" className={"nav-link" + (route.toString().includes("/gallery") ? " active" : "")}>
@@ -41,9 +41,9 @@ const NavLinks = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <a href="/screenshots" className={"nav-link" + (route === "/screenshots" ? " active" : "")}>
+          <Link to="/screenshots" className={"nav-link" + (route === "/screenshots" ? " active" : "")}>
             Screenshots
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

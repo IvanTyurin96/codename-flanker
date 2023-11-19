@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import ScreenshotsGrid from "../components/screenshotsGrid";
 import LoadingSpinner from "../components/loadingSpinner";
 import { fetchApi } from "../utils/apiFetcher";
+import { setScreenshots } from "../../redux/actions";
 
 const Screenshots = () => {
-  const [screenshots, setScreenshots] = useState([]);
+  const dispatch = useDispatch();
+
+  const screenshots = useSelector((state) => state.screenshots);
   const [fetchError, setFetchError] = useState(null);
 
   function show() {
@@ -31,8 +35,14 @@ const Screenshots = () => {
     return <div className="error">{fetchError.toString()}</div>;
   }
 
+  function cacheScreenshots(data) {
+    dispatch(setScreenshots(data));
+  }
+
   useEffect(() => {
-    fetchApi("v1/screenshots", setScreenshots, setFetchError);
+    if (screenshots.length == 0) {
+      fetchApi("v1/screenshots", cacheScreenshots, setFetchError);
+    }
   }, []);
 
   return <div className="pt-3 pb-3">{show()}</div>;
