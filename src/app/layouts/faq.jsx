@@ -8,7 +8,7 @@ const Faq = () => {
       <h5 className="mt-3 mb-2">Question №2: Where can I download?</h5>
       <p className="mt-2 mb-2">
         - Check{" "}
-        <a className="link-primary" href="#/download">
+        <a className="link-primary" href="/download">
           download page
         </a>
       </p>

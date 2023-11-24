@@ -1,9 +1,50 @@
 import ScreenshotsGrid from "../components/screenshotsGrid";
-import api from "../api";
+import LoadingSpinner from "../components/loadingSpinner";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchApi } from "../utils/apiFetcher";
+import { setScreenshots } from "../../redux/actions";
 
 const Home = () => {
-  const screenshots = api.screenshots.fetchAll();
+  const dispatch = useDispatch();
+
+  const screenshots = useSelector((state) => state.screenshots);
   const limitedScreenshots = screenshots.slice(0, 8);
+  const [fetchError, setFetchError] = useState(null);
+
+  function showScreenshots() {
+    if (fetchError == null) {
+      return renderData();
+    } else {
+      return renderError();
+    }
+  }
+
+  function renderData() {
+    if (screenshots.length > 0) {
+      return <ScreenshotsGrid screenshots={limitedScreenshots} isCarousel={true} />;
+    } else {
+      return (
+        <div className="d-flex flex-column align-items-center">
+          <LoadingSpinner />
+        </div>
+      );
+    }
+  }
+
+  function renderError() {
+    return <div className="error">{fetchError.toString()}</div>;
+  }
+
+  function cacheScreenshots(data) {
+    dispatch(setScreenshots(data));
+  }
+
+  useEffect(() => {
+    if (screenshots.length == 0) {
+      fetchApi("v1/screenshots", cacheScreenshots, setFetchError);
+    }
+  }, []);
 
   return (
     <>
@@ -12,7 +53,7 @@ const Home = () => {
           Codename Flanker Su-30 - A <strong>free</strong> community mod for DCS World.
         </p>
         <p className="mt-2 mb-2">
-          The mod has already been released and you can download the latest version from <a href="#/download">download page</a>.
+          The mod has already been released and you can download the latest version from <a href="/download">download page</a>.
         </p>
         <p className="mt-2 mb-2">It has a few modifications in game, but primary all Su-30 variants are separated into two types:</p>
         <ul className="mt-2 mb-2">
@@ -37,9 +78,7 @@ const Home = () => {
         <p className="mt-2 mb-2">
           Join our Discord server: <a href="https://discord.gg/codename-flanker-community-839196573228335185">Click</a>
         </p>
-        <div className="mt-2">
-          <ScreenshotsGrid screenshots={limitedScreenshots} isCarousel={true} />
-        </div>
+        <div className="mt-2">{showScreenshots()}</div>
       </div>
     </>
   );

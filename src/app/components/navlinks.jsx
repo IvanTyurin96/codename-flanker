@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { Link } from "react-router-dom";
 
 const NavLinks = () => {
   const route = useLocation().pathname;
@@ -10,39 +11,39 @@ const NavLinks = () => {
     <div id="navbar" className="collapse navbar-collapse">
       <ul id="navbar-list" className="navbar-nav me-auto">
         <li className="nav-item">
-          <a href="#/" className={"nav-link" + (route === "/" || route === "/home" ? " active" : "")}>
+          <Link to="/" className={"nav-link" + (route === "/" || route === "/home" ? " active" : "")}>
             Home
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a href="#/download" className={"nav-link" + (route === "/download" ? " active" : "")}>
+          <Link to="/download" className={"nav-link" + (route === "/download" ? " active" : "")}>
             Download
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a href="#/installation" className={"nav-link" + (route === "/installation" ? " active" : "")}>
+          <Link to="/installation" className={"nav-link" + (route === "/installation" ? " active" : "")}>
             Installation
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a href="#/gallery" className={"nav-link" + (route === "/gallery" ? " active" : "")}>
+          <Link to="/gallery" className={"nav-link" + (route.toString().includes("/gallery") ? " active" : "")}>
             Gallery
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a href="#/faq" className={"nav-link" + (route === "/faq" ? " active" : "")}>
+          <Link to="/faq" className={"nav-link" + (route === "/faq" ? " active" : "")}>
             FAQ
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a href="#/patchnotes" className={"nav-link" + (route === "/patchnotes" ? " active" : "")}>
+          <Link to="/patchnotes" className={"nav-link" + (route.toString().includes("/patchnotes") ? " active" : "")}>
             Patchnotes
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a href="#/screenshots" className={"nav-link" + (route === "/screenshots" ? " active" : "")}>
+          <Link to="/screenshots" className={"nav-link" + (route === "/screenshots" ? " active" : "")}>
             Screenshots
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

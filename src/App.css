@@ -105,10 +105,10 @@ body {
 }
 
 
-.patch {
+.patchnote {
   list-style-type: initial !important;
 }
-.patch li {
+.patchnote li {
   color: lightgrey;
 }
 
@@ -304,3 +304,26 @@ body {
 .screenshots-grid-carousel-circles-selected {
   background-color: white;
 }
+
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loading-spinner {
+  width: 25px;
+  height: 25px;
+  border: 5px solid lightgrey;
+  border-top: 5px solid #383636;
+  border-radius: 50%;
+  animation: spinner 1.5s linear infinite;
+}
+
+.error {
+  color: red;
+}
+
