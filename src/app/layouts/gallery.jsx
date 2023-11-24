@@ -4,7 +4,7 @@ import LoadingSpinner from "../components/loadingSpinner";
 import { fetchApi } from "../utils/apiFetcher";
 import { Link } from "react-router-dom";
 import { shuffleArray } from "../../app/utils/shuffleArray";
-import { setSortedArtworks } from "../../redux/actions";
+import { setSortedArtworks, setArtists } from "../../redux/actions";
 
 const Gallery = () => {
   const screenCollapseWidth = useSelector((state) => state.screenCollapseWidth);
@@ -17,7 +17,7 @@ const Gallery = () => {
   const artworks = useSelector((state) => state.sortedArtworks);
   const [fetchArtworksError, setFetchArtworksError] = useState(null);
 
-  const [artists, setArtists] = useState([]);
+  const artists = useSelector((state) => state.artists);
   const [fetchArtistsError, setFetchArtistsError] = useState(null);
 
   function show() {
@@ -188,11 +188,17 @@ const Gallery = () => {
     dispatch(setSortedArtworks(shuffleArray(data)));
   }
 
+  function cacheArtists(data) {
+    dispatch(setArtists(data));
+  }
+
   useEffect(() => {
     if (artworks.length == 0) {
       fetchApi("v1/artworks", sortAndCacheArtworks, setFetchArtworksError);
     }
-    fetchApi("v1/artists", setArtists, setFetchArtistsError);
+    if (artists.length == 0) {
+      fetchApi("v1/artists", cacheArtists, setFetchArtistsError);
+    }
   }, []);
 
   return show();
