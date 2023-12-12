@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchApi } from "../utils/apiFetcher";
 import { setScreenshots } from "../../redux/actions";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ const Home = () => {
           Codename Flanker Su-30 - A <strong>free</strong> community mod for DCS World.
         </p>
         <p className="mt-2 mb-2">
-          The mod has already been released and you can download the latest version from <a href="/download">download page</a>.
+          The mod has already been released and you can download the latest version from <Link to="/download">download page</Link>.
         </p>
         <p className="mt-2 mb-2">It has a few modifications in game, but primary all Su-30 variants are separated into two types:</p>
         <ul className="mt-2 mb-2">
@@ -76,7 +77,7 @@ const Home = () => {
           The mod currently uses SFM (Standard Flight Model) but in next update, it will feature a fully custom EFM (External Flight Model).
         </p>
         <p className="mt-2 mb-2">
-          Join our Discord server: <a href="https://discord.gg/codename-flanker-community-839196573228335185">Click</a>
+          Join our Discord server: <a href="https://discord.gg/codename-flanker-community-839196573228335185" target="_blank">Click</a>
         </p>
         <div className="mt-2">{showScreenshots()}</div>
       </div>
