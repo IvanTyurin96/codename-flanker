@@ -11,6 +11,7 @@ import Footer from "./app/components/footer";
 import Artwork from "./app/layouts/artwork";
 import Installation from "./app/layouts/installation";
 import Screenshots from "./app/layouts/screenshots";
+import Videos from "./app/layouts/videos";
 
 function App() {
   const themeHeight = 300;
@@ -39,6 +40,7 @@ function App() {
           <Route path="/patchnotes/:patchnoteId" render={(props) => <Patchnotes {...props} />} />
           <Route path="/patchnotes" component={Patchnotes} />
           <Route path="/screenshots" component={Screenshots} />
+          <Route path="/videos" component={Videos} />
           <Route path="/" component={Home} />
           <Redirect to="/" />
         </Switch>

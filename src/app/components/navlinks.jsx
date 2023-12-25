@@ -45,6 +45,11 @@ const NavLinks = () => {
             Screenshots
           </Link>
         </li>
+        <li className="nav-item">
+          <Link to="/videos" className={"nav-link" + (route === "/videos" ? " active" : "")}>
+            Videos
+          </Link>
+        </li>
       </ul>
     </div>
   );
