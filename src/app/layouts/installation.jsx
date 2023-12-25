@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Installation = () => {
   return (
     <div className="pt-3 pb-3">
@@ -6,9 +8,9 @@ const Installation = () => {
       <ol className="mb-0">
         <li>
           Follow the links to Google Drive on{" "}
-          <a className="link-primary" href="/download">
+          <Link className="link-primary" to="/download">
             download page
-          </a>{" "}
+          </Link>{" "}
           and download zip-archive with mod.{" "}
         </li>
         <li>
