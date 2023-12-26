@@ -25,7 +25,7 @@ const Faq = () => {
       <h5 className="mt-3 mb-2">Question №4: I installed the mod but it isn't showing up/getting error.</h5>
       <p className="mt-2 mb-2">
         - You didn't follow{" "}
-        <a className="link-primary" href="https://discord.com/channels/839196573228335185/935173821001003018">
+        <a className="link-primary" href="https://discord.com/channels/839196573228335185/935173821001003018" target="_blank">
           #tutorials
         </a>{" "}
         properly. Ensure this is the path: "\Saved Games\DCS\Mods\aircraft". If "mods" & "aircraft" folders are missing, make
@@ -68,7 +68,7 @@ const Faq = () => {
       <p className="mt-2 mb-2">
         - Yes, but this is a simplified implantation and a better one will come with EFMs. To learn how to use TVC, watch "Flight
         Control System" tutorial in{" "}
-        <a className="link-primary" href="https://discord.com/channels/839196573228335185/935173821001003018">
+        <a className="link-primary" href="https://discord.com/channels/839196573228335185/935173821001003018" target="_blank">
           #tutorials
         </a>
       </p>
@@ -91,7 +91,7 @@ const Faq = () => {
       <h5 className="mt-3 mb-2">Question №15: How can I turn on Russian Betty (RI-65)?</h5>
       <p className="mt-2 mb-2">
         - Not implemented at the moment. There is a user mod in{" "}
-        <a className="link-primary" href="https://discord.com/channels/839196573228335185/938331458160955442">
+        <a className="link-primary" href="https://discord.com/channels/839196573228335185/938331458160955442" target="_blank">
           #community-addons
         </a>{" "}
         that may work. Contact the author for technical support.
@@ -127,11 +127,11 @@ const Faq = () => {
       <p className="mt-2 mb-2">
         - We all work in our free time which has no roadmap, so unfortunately the mod doesn't either. Same goes for EFM. However,
         whenever something is ready, we will mention it in{" "}
-        <a className="link-primary" href="https://discord.com/channels/839196573228335185/839204422332841995">
+        <a className="link-primary" href="https://discord.com/channels/839196573228335185/839204422332841995" target="_blank">
           #announcement
         </a>{" "}
         and{" "}
-        <a className="link-primary" href="https://discord.com/channels/839196573228335185/839204869533335582">
+        <a className="link-primary" href="https://discord.com/channels/839196573228335185/839204869533335582" target="_blank">
           #development-progress
         </a>{" "}
         so keep an eye on those channels.
