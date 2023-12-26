@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Faq = () => {
   return (
     <div className="faq pt-3 pb-3">
@@ -8,9 +10,9 @@ const Faq = () => {
       <h5 className="mt-3 mb-2">Question №2: Where can I download?</h5>
       <p className="mt-2 mb-2">
         - Check{" "}
-        <a className="link-primary" href="/download">
+        <Link className="link-primary" to="/download">
           download page
-        </a>
+        </Link>
       </p>
 
       <h5 className="mt-3 mb-2">Question №3: Which versions of the aircraft are included?</h5>
