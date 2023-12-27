@@ -32,16 +32,16 @@ function App() {
       <NavBar stickyClass={stickyClass} />
       <div className={"container" + containerMargin}>
         <Switch>
-          <Route path="/download" component={Download} />
-          <Route path="/installation" component={Installation} />
-          <Route path="/gallery/:artworkId" render={(props) => <Artwork {...props} />} />
-          <Route path="/gallery" component={Gallery} />
-          <Route path="/faq" component={Faq} />
-          <Route path="/patchnotes/:patchnoteId" render={(props) => <Patchnotes {...props} />} />
-          <Route path="/patchnotes" component={Patchnotes} />
-          <Route path="/screenshots" component={Screenshots} />
-          <Route path="/videos" component={Videos} />
-          <Route path="/" component={Home} />
+          <Route exact path="/download" component={Download} />
+          <Route exact path="/installation" component={Installation} />
+          <Route exact path="/gallery/:artworkId" render={(props) => <Artwork {...props} />} />
+          <Route exact path="/gallery" component={Gallery} />
+          <Route exact path="/faq" component={Faq} />
+          <Route exact path="/patchnotes/:patchnoteId" render={(props) => <Patchnotes {...props} />} />
+          <Route exact path="/patchnotes" component={Patchnotes} />
+          <Route exact path="/screenshots" component={Screenshots} />
+          <Route exact path="/videos" component={Videos} />
+          <Route exact path="/" component={Home} />
           <Redirect to="/" />
         </Switch>
       </div>
