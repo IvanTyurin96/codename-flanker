@@ -11,7 +11,7 @@ const NavLinks = () => {
     <div id="navbar" className="collapse navbar-collapse">
       <ul id="navbar-list" className="navbar-nav me-auto">
         <li className="nav-item">
-          <Link to="/" className={"nav-link" + (route === "/" || route === "/home" ? " active" : "")}>
+          <Link to="/" className={"nav-link" + (route === "/" ? " active" : "")}>
             Home
           </Link>
         </li>
