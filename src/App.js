@@ -35,11 +35,11 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/download" component={Download} />
           <Route exact path="/installation" component={Installation} />
-          <Route exact path="/gallery/:artworkId" render={(props) => <Artwork {...props} />} />
           <Route exact path="/gallery" component={Gallery} />
+          <Route exact path="/gallery/:artworkId" render={(props) => <Artwork {...props} />} />
           <Route exact path="/faq" component={Faq} />
-          <Route exact path="/patchnotes/:patchnoteId" render={(props) => <Patchnotes {...props} />} />
           <Route exact path="/patchnotes" component={Patchnotes} />
+          <Route exact path="/patchnotes/:patchnoteId" render={(props) => <Patchnotes {...props} />} />
           <Route exact path="/screenshots" component={Screenshots} />
           <Route exact path="/videos" component={Videos} />
           <Redirect to="/" />
