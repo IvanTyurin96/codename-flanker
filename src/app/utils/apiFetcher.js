@@ -7,7 +7,7 @@ export function fetchApi(path, callbackDataHook, callbackErrorHook) {
         callbackErrorHook(null);
         return response.json();
       }
-      throw new Error(response.status);
+      throw new Error(`${response.status}: ${response.statusText}`);
     })
     .then((data) => callbackDataHook(data))
     .catch((error) => {
