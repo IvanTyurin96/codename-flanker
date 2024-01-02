@@ -1,3 +1,3 @@
-const webApi = "http://193.124.113.86:81";
+const webApi = "https://codename-flanker.ru:444";
 
 export default webApi;
