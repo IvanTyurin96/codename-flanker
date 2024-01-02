@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="mt-auto bg-dark">
       <div className="container column d-flex align-items-center justify-content-between">
-        <div className="text-center pl-0 pt-3 pb-3 pr-3">© 2023 Ivan Tyurin</div>
+        <div className="text-center pl-0 pt-3 pb-3 pr-3">© 2024 Ivan Tyurin</div>
         <div className="text-center d-flex">
           <a className="footer-society me-2 d-flex align-items-center justify-content-center" href="https://vk.com/codenameflanker" target="_blank">
             <VkLogo className="bi-vk" />
