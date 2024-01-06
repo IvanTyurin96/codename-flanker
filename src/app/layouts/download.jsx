@@ -6,7 +6,7 @@ const Download = () => {
       <h3 className="mb-2">Su-30 Community Mod v2.7.3b</h3>
       <em>Multiple links are for redundancy. All links below have the exact same file.</em>
       <p className="mt-2 mb-2">Links:</p>
-      <ul className="mt-2 mb-2">
+      <ul className="mt-2 mb-2 download-list">
         <li>
           <img className="download-icon" src={GoogleDriveIcon}></img>
           <a href="https://drive.google.com/file/d/18xdol9UjfF3xWqK9rYig2OVkYWLymF-j/view?usp=sharing" target="_blank" className="link-primary text-break">

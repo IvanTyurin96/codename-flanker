@@ -85,10 +85,15 @@ body {
 }
 
 
+.download-list li {
+  margin-top: 8px;
+  margin-bottom: 8px;
+ }
 .download-icon {
   margin: 0px 8px;
   height: 24px;
 }
+
 
 
 .faq p {
@@ -229,6 +234,12 @@ body {
   height: auto;
   margin-left: auto;
   margin-right: auto;
+}
+
+
+.documentation-list li {
+ margin-top: 8px;
+ margin-bottom: 8px;
 }
 
 

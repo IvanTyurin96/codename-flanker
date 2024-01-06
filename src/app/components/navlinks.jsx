@@ -26,6 +26,11 @@ const NavLinks = () => {
           </Link>
         </li>
         <li className="nav-item">
+          <Link to="/documentation" className={"nav-link" + (route === "/documentation" ? " active" : "")}>
+            Documentation
+          </Link>
+        </li>
+        <li className="nav-item">
           <Link to="/gallery" className={"nav-link" + (route.toString().includes("/gallery") ? " active" : "")}>
             Gallery
           </Link>

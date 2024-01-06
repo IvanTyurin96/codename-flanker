@@ -12,6 +12,7 @@ import Artwork from "./app/layouts/artwork";
 import Installation from "./app/layouts/installation";
 import Screenshots from "./app/layouts/screenshots";
 import Videos from "./app/layouts/videos";
+import Documentation from "./app/layouts/documentation";
 
 function App() {
   const themeHeight = 300;
@@ -35,6 +36,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/download" component={Download} />
           <Route exact path="/installation" component={Installation} />
+          <Route exact path="/documentation" component={Documentation} />
           <Route exact path="/gallery" component={Gallery} />
           <Route exact path="/gallery/:artworkId" render={(props) => <Artwork {...props} />} />
           <Route exact path="/faq" component={Faq} />
