@@ -31,7 +31,6 @@ const Artwork = ({ match }) => {
       return (
         <div className={"d-flex pt-3" + (windowWidth >= screenCollapseWidth ? " flex-row" : " flex-column")}>
           <div className={"d-flex flex-column position-relative" + (windowWidth >= screenCollapseWidth ? " me-4" : "")}>
-            {renderArrows()}
             {artwork.images.map((image, imageIndex) => {
               return (
                 <div key={imageIndex} className="mb-3">
@@ -69,21 +68,6 @@ const Artwork = ({ match }) => {
             <LoadingSpinner />
           </div>
         </div>
-      );
-    }
-  }
-
-  function renderArrows() {
-    if (artworks.length > 0) {
-      return (
-        <>
-          <div className={"artwork-arrows" + (leftArrow ? "" : " d-none")} style={{ top: "250px", left: "-12px" }}>
-            <i className="bi bi-arrow-left-short"></i>
-          </div>
-          <div className={"artwork-arrows" + (rightArrow ? "" : " d-none")} style={{ top: "250px", right: "-12px" }}>
-            <i className="bi bi-arrow-right-short"></i>
-          </div>
-        </>
       );
     }
   }
