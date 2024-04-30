@@ -73,11 +73,12 @@ const Home = () => {
           <strong>Air-to-Air</strong> Su-30 modifications use Su-33 avionics. These variants can only be used by players that have Flamming Cliffs 3 module or
           Su-33 module.
         </p>
+        <p className="mt-2 mb-2">The mod currently uses fully custom EFM (External Flight Model).</p>
         <p className="mt-2 mb-2">
-          The mod currently uses SFM (Standard Flight Model) but in next update, it will feature a fully custom EFM (External Flight Model).
-        </p>
-        <p className="mt-2 mb-2">
-          Join our Discord server: <a href="https://discord.gg/codename-flanker-community-839196573228335185" target="_blank">Click</a>
+          Join our Discord server:{" "}
+          <a href="https://discord.gg/codename-flanker-community-839196573228335185" target="_blank">
+            Click
+          </a>
         </p>
         <div className="mt-2">{showScreenshots()}</div>
       </div>
